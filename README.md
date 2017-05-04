@@ -1,7 +1,7 @@
 # datadec-starter
 
 > A Vue.js template to create new applications in Datadec, S.A.
-> Based on the webpack-simple template of VueJS.
+Based on the webpack-simple template of VueJS.
 
 ## Build Setup
 
