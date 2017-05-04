@@ -1,12 +1,13 @@
 # datadec-starter
 
-> A Vue.js project
+> A Vue.js template to create new applications in Datadec, S.A.
+> Based on the webpack-simple template of VueJS.
 
 ## Build Setup
 
 ``` bash
 # install dependencies
-npm install
+npm install or yarn install
 
 # serve with hot reload at localhost:8080
 npm run dev
@@ -15,4 +16,3 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

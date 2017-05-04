@@ -5,7 +5,7 @@
 	"author": "aperez",
 	"private": true,
 	"scripts": {
-		"dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
+		"dev": "cross-env NODE_ENV=development webpack-dev-server --inline --open --hot",
 		"build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
 	},
 	"dependencies": {
@@ -20,8 +20,10 @@
 		"cross-env": "^4.0.0",
 		"css-loader": "^0.28.1",
 		"file-loader": "^0.11.1",
+		"html-webpack-plugin": "^2.28.0",
 		"node-sass": "^4.5.2",
 		"sass-loader": "^6.0.3",
+		"url-loader": "^0.5.8",
 		"vue-loader": "^12.0.3",
 		"vue-template-compiler": "^2.3.2",
 		"webpack": "^2.4.1",

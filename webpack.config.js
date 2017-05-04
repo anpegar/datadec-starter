@@ -1,12 +1,20 @@
-var path = require('path')
-var webpack = require('webpack')
+// const resolve = require('path').resolve
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const url = require('url')
+const publicPath = ''
 
 module.exports = {
-	entry: './src/main.js',
+	entry: {
+		vendor: './src/vendor',
+		app: './src/main.js'
+	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
+		chunkFilename: '[id].js?[chunkhash]',
 		publicPath: '/dist/',
-		filename: 'build.js'
+		filename: '[name].js'
 	},
 	module: {
 		rules: [{
@@ -44,7 +52,9 @@ module.exports = {
 	},
 	devServer: {
 		port: 3000,
-		historyApiFallback: true,
+		historyApiFallback: {
+			app: url.parse((process.env.NODE_ENV === 'development') ? '/dist/' : publicPath).pathname
+		},
 		noInfo: true
 	},
 	performance: {
@@ -52,6 +62,12 @@ module.exports = {
 	},
 	devtool: '#eval-source-map',
 	plugins: [
+		new webpack.optimize.CommonsChunkPlugin({
+			names: ['vendor', 'manifest']
+		}),
+		new HtmlWebpackPlugin({
+			template: 'src/index.html'
+		}),
 		new webpack.ProvidePlugin({
 			$: 'jquery',
 			jQuery: 'jquery'
