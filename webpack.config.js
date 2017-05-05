@@ -1,9 +1,9 @@
-// const resolve = require('path').resolve
-const path = require('path')
+const resolve = require('path').resolve
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const url = require('url')
 const publicPath = ''
+const isProd = (process.env.NODE_ENV === 'production') ? true : false;
 
 module.exports = {
 	entry: {
@@ -11,10 +11,10 @@ module.exports = {
 		app: './src/main.js'
 	},
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: resolve(__dirname, 'dist'),
+		filename: isProd ? '[name].js?[chunkhash]' : '[name].js',
 		chunkFilename: '[id].js?[chunkhash]',
-		publicPath: '/dist/',
-		filename: '[name].js'
+		publicPath: isProd ? publicPath : '/dist/'
 	},
 	module: {
 		rules: [{
@@ -33,7 +33,7 @@ module.exports = {
 			},
 			{
 				test: /\.js$/,
-				loader: 'babel-loader',
+				use: ['babel-loader'],
 				exclude: /node_modules/
 			},
 			{
@@ -47,18 +47,18 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js'
+			'vue$': 'vue/dist/vue.esm.js',
+			'~': resolve(__dirname, 'src')
 		}
 	},
 	devServer: {
+		host: '127.0.0.1',
+		// contentBase: __dirname + '/src',
 		port: 3000,
 		historyApiFallback: {
-			app: url.parse((process.env.NODE_ENV === 'development') ? '/dist/' : publicPath).pathname
+			index: url.parse(isProd ? publicPath : '/dist/').pathname
 		},
-		noInfo: true
-	},
-	performance: {
-		hints: false
+		noInfo: false
 	},
 	devtool: '#eval-source-map',
 	plugins: [
@@ -75,7 +75,7 @@ module.exports = {
 	]
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (isProd) {
 	module.exports.devtool = '#source-map'
 	// http://vue-loader.vuejs.org/en/workflow/production.html
 	module.exports.plugins = (module.exports.plugins || []).concat([
