@@ -1,32 +1,44 @@
 {
-	"name": "datadec-starter",
-	"description": "A Vue.js project",
-	"version": "1.0.0",
-	"author": "aperez",
-	"private": true,
-	"scripts": {
-		"dev": "cross-env NODE_ENV=development webpack-dev-server --inline --open --hot",
-		"build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
-	},
-	"dependencies": {
-		"bootstrap": "^3.3.7",
-		"jquery": "^3.2.1",
-		"vue": "^2.3.2"
-	},
-	"devDependencies": {
-		"babel-core": "^6.24.1",
-		"babel-loader": "^7.0.0",
-		"babel-preset-latest": "^6.24.1",
-		"cross-env": "^4.0.0",
-		"css-loader": "^0.28.1",
-		"file-loader": "^0.11.1",
-		"html-webpack-plugin": "^2.28.0",
-		"node-sass": "^4.5.2",
-		"sass-loader": "^6.0.3",
-		"url-loader": "^0.5.8",
-		"vue-loader": "^12.0.3",
-		"vue-template-compiler": "^2.3.2",
-		"webpack": "^2.5.0",
-		"webpack-dev-server": "^2.4.5"
-	}
+  "name": "datadec-starter",
+  "description": "A Vue.js project",
+  "version": "1.0.0",
+  "author": "aperez",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --open --hot",
+    "build": "npm run clean && cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "clean": "rimraf ./dist/*"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "vue": "^2.3.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "bootstrap-loader": "^2.1.0",
+    "bootstrap-sass": "^3.3.7",
+    "cross-env": "^4.0.0",
+    "css-loader": "^0.28.1",
+    "eslint": "^3.19.0",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^2.0.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.1",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "^2.28.0",
+    "node-sass": "^4.5.2",
+    "resolve-url-loader": "^2.0.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "vue-loader": "^12.0.3",
+    "vue-template-compiler": "^2.3.2",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  }
 }
